@@ -90,7 +90,7 @@ impl Read for ArcBytes {
 }
 
 /// Returns `true` if `subslice` lies entirely within `backing`.
-fn is_subslice_of(subslice: &[u8], backing: &[u8]) -> bool {
+pub(crate) fn is_subslice_of(subslice: &[u8], backing: &[u8]) -> bool {
     let backing = backing.as_ptr_range();
     let sub = subslice.as_ptr_range();
     sub.start >= backing.start && sub.end <= backing.end
