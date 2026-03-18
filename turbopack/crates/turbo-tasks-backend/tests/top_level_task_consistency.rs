@@ -40,7 +40,8 @@ async fn test_eventual_read_in_top_level_task_fails() {
 async fn test_cell_read_in_top_level_task_fails() {
     run_once(&REGISTRATION, || async {
         let cell = returns_value_operation()
-            .resolve_strongly_consistent()
+            .resolve()
+            .strongly_consistent()
             .await?;
         let _ = cell.await?;
         Ok(())
